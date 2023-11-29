@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Open+Sans&display=swap');
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.item-nav :hover{
+    color: #ef4444;
+}
+
+.icon-nav {
+    position: relative;
+    color: #ffffff8c;
+}
+.icon-nav:hover{
+    color: #ffffff;
+}
+.circle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #e73a4b;
+    color: #fff3cd;
+    text-align: center;
+    font-size: 12px;
+    top: 10px;
+    right: 105px;
+}
+
+.page-link:hover{
+    color: #20c997;
+}
+
+@media (max-width: 767px) {
+
+    .category{
+        padding: 0px 10px 0px 10px;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .cart{
+        font-size: 12px;
+    }
+    .price{
+        font-size: 12px;
+    }
+}
