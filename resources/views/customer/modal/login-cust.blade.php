@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('login') }}" method="post">
+                <form action="{{ route('loginCust') }}" method="post">
                     @csrf
                     <div>
                         <label for="email" class="form-label">Email</label>
