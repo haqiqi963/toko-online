@@ -68,10 +68,10 @@ class UserController extends Controller
             'password.required' => 'Password must be filled',
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (auth()->attempt($credentials)) {
             $request->session()->regenerate();
 
-            if (Auth::user()->role_id == 3) {
+            if (auth()->user()->role_id == 3) {
                 Alert::toast('You are logged in', 'success');
                 return redirect()->route('customerHome');
             }

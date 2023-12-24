@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminController extends Controller
@@ -25,10 +23,10 @@ class AdminController extends Controller
             'password.required' => 'Password must be filled',
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (auth()->attempt($credentials)) {
             $request->session()->regenerate();
 
-            if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2) {
+            if (auth()->user()->role_id == 1 || auth()->user()->role_id == 2) {
                 Alert::toast('You are logged in', 'success');
                 return redirect('/secret/admin/dashboard');
             }
@@ -40,7 +38,7 @@ class AdminController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::logout();
+        auth()->logout();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();

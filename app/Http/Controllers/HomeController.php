@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -17,13 +18,18 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+
+    public function home()
     {
-        return view('customer.home');
+        $products = Product::all();
+        return view('customer.home',[
+            'products' => $products
+        ]);
     }
     public function shop()
     {
-        return view('customer.shop');
+        $products = Product::paginate(2);
+        return view('customer.shop', compact('products'));
     }
 
     public function contact()
@@ -34,6 +40,11 @@ class HomeController extends Controller
     public function transaction()
     {
         return view('customer.transaction');
+    }
+
+    public function checkout()
+    {
+        return view('customer.checkOut');
     }
 
 }

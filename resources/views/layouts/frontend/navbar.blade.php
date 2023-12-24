@@ -8,7 +8,8 @@
             @guest
                 <ul class="navbar-nav gap-3 d-flex justify-content-center fs-5 item-nav">
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::is('home') ? 'active fw-bold' : '' }}" aria-current="page" href="/home">Home</a>
+                        <a class="nav-link {{ Request::path() == '/' ? 'active' : '' }}" aria-current="page"
+                           href="/">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('shop') ? 'active fw-bold' : '' }}" href="/shop">Shop</a>
@@ -31,7 +32,8 @@
                     @if(Auth::user()->role_id == 3)
                         <ul class="navbar-nav gap-3 d-flex justify-content-center fs-5 item-nav">
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::is('home') ? 'active fw-bold' : '' }}" aria-current="page" href="/home">Home</a>
+                                <a class="nav-link {{ Request::path() == '/' ? 'active' : '' }}" aria-current="page"
+                                   href="/">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ Request::is('shop') ? 'active fw-bold' : '' }}" href="/shop">Shop</a>
@@ -76,7 +78,7 @@
                         </ul>
                         <div class="d-flex gap-4 align-items-center">
                             <div class="notification">
-                                <a href="/transaction" class="fs-5"><i class="bi icon-nav bi-bag-fill bi-3x"></i></a>
+                                <a href="/transaction" class="nav-link {{ Request::is('transaction') ? 'active fw-bold' : '' }}"><i class="bi icon-nav bi-bag-fill bi-3x"></i></a>
                                 <div class="circle">10</div>
                             </div>
                         </div>

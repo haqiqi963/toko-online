@@ -27,28 +27,34 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($products as $product)
-                        <tr>
-                            <td>{{ ($products->currentPage() - 1) * $products->perPage() + $loop->iteration }}</td>
-                            <td>
-                                <img src="{{ asset('storage/product/' . $product->img_product) }}" width="50px" alt="" draggable="false">
-                            </td>
-                            <td>{{ $product->created_at->format('d F Y') }}</td>
-                            <td>{{ $product->sku }}</td>
-                            <td>{{ $product->name_product }}</td>
-                            <td>{{ $product->category->name }}</td>
-                            <td>{{ $product->type->name }}</td>
-                            <td>{{ 'Rp. ' . number_format($product->price, 0, ',', '.') }}</td>
-                            <td>{{ $product->quantity }}</td>
-                            <td>
-                                <center>
-                                    <input type="hidden" id="sku" value="{{ $product->sku }}">
-                                    <button class="btn btn-primary editModal" data-id="{{ $product->id }}"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-danger deleteData" data-id="{{ $product->id }}"><i class="fas fa-trash"></i></button>
-                                </center>
-                            </td>
-                        </tr>
-                    @endforeach
+                        @if($products->isEmpty())
+                            <tr class="text-center">
+                                <td colspan="10">Not Available Data...</td>
+                            </tr>
+                        @else
+                            @foreach($products as $product)
+                            <tr>
+                                <td>{{ ($products->currentPage() - 1) * $products->perPage() + $loop->iteration }}</td>
+                                <td>
+                                    <img src="{{ asset('storage/product/' . $product->img_product) }}" width="50px" alt="" draggable="false">
+                                </td>
+                                <td>{{ $product->created_at->format('d F Y') }}</td>
+                                <td>{{ $product->sku }}</td>
+                                <td>{{ $product->name_product }}</td>
+                                <td>{{ $product->category->name }}</td>
+                                <td>{{ $product->type->name }}</td>
+                                <td>{{ 'Rp. ' . number_format($product->price, 0, ',', '.') }}</td>
+                                <td>{{ $product->quantity }}</td>
+                                <td>
+                                    <center>
+                                        <input type="hidden" id="sku" value="{{ $product->sku }}">
+                                        <button class="btn btn-primary editModal" data-id="{{ $product->id }}"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-danger deleteData" data-id="{{ $product->id }}"><i class="fas fa-trash"></i></button>
+                                    </center>
+                                </td>
+                            </tr>
+                            @endforeach
+                        @endif
                     </tbody>
                 </table>
 

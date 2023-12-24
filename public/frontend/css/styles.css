@@ -25,12 +25,24 @@ body{
     color: #fff3cd;
     text-align: center;
     font-size: 12px;
-    top: 10px;
-    right: 105px;
+    top: -10px;
+    right: -15px;
 }
 
 .page-link:hover{
     color: #20c997;
+}
+
+.notification{
+    position: relative;
+    display: inline-block;
+}
+.fa-bag-shopping{
+    font-size: 24px;
+    color: rgba(249, 249, 249, 0.686);
+}
+.fa-bag-shopping:hover{
+    color: rgba(255, 255, 255, 0.867);
 }
 
 @media (max-width: 767px) {

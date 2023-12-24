@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\ReportController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,16 +19,15 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+    Route::get('/', [TransactionController::class, 'index'])->name('home');
+    Route::get('/home', [TransactionController::class, 'index'])->name('home');
+    Route::post('/addToCart/{id}', [TransactionController::class, 'addToCart'])->name('addToCart');
 
-Route::get('/', function () {
-    return view('customer.home');
-})->name('customerHome');
-
-
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/shop', [HomeController::class, 'shop'])->name('shop');
     Route::get('/transaction', [HomeController::class, 'transaction'])->name('transaction');
     Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+
+    Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
 
     Route::post('/registerCust', [UserController::class, 'registerCustomer'])->name('registerCust');
     Route::post('/loginCust', [UserController::class, 'authentication'])->name('loginCust');
