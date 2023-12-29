@@ -24,7 +24,9 @@
                     </button>
                     <div class="notification">
                         <a href="/transaction" class="fs-5"><i class="bi icon-nav bi-bag-fill bi-3x"></i></a>
-                        <div class="circle">10</div>
+                        @if($countCarts)
+                            <div class="circle">{{ $countCarts }}</div>
+                        @endif
                     </div>
                 </div>
             @endguest
@@ -61,7 +63,9 @@
                         <div class="d-flex gap-4 align-items-center">
                             <div class="notification">
                                 <a href="/transaction" class="fs-5"><i class="bi icon-nav bi-bag-fill bi-3x"></i></a>
-                                <div class="circle">10</div>
+                                @if($countCarts)
+                                    <div class="circle">{{ $countCarts }}</div>
+                                @endif
                             </div>
                         </div>
                     @else
@@ -75,14 +79,16 @@
                             <li class="nav-item">
                                 <a class="nav-link {{ Request::is('contact') ? 'active fw-bold' : '' }}" href="/contact">Contact</a>
                             </li>
-                        </ul>
-                        <div class="d-flex gap-4 align-items-center">
-                            <div class="notification">
-                                <a href="/transaction" class="nav-link {{ Request::is('transaction') ? 'active fw-bold' : '' }}"><i class="bi icon-nav bi-bag-fill bi-3x"></i></a>
-                                <div class="circle">10</div>
-                            </div>
-                        </div>
 
+                            <li class="nav-item">
+                                <div class="notification">
+                                    <a href="/transaction" class="nav-link"><i class="bi icon-nav bi-bag-fill bi-3x"></i></a>
+                                    @if($countCarts)
+                                        <div class="circle">{{ $countCarts }}</div>
+                                    @endif
+                                </div>
+                            </li>
+                        </ul>
                     @endif
                 @endauth
         </div>

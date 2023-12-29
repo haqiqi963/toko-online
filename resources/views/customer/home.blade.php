@@ -8,7 +8,7 @@
 
     <div class="content d-flex flex-lg-wrap gap-4 mb-5">
         <div class="row">
-            @foreach($products as $product)
+            @foreach($bestSell as $product)
                 <div class="col-lg-2 col-md-4 col-sm-6 my-2">
                     <div class="card h-100">
                         <img src="{{ asset('storage/product/' . $product->img_product) }}" class="card-img-top h-100" draggable="false" alt="">
@@ -18,9 +18,13 @@
                         </div>
                         <div class="card-footer d-flex justify-content-between align-items-center">
                             <p class="m-auto fw-semibold" style="font-size: 16px">Rp. {{ number_format($product->price, 0, ',', '.') }}</p>
-                            <a class="btn btn-sm btn-outline-primary" style="font-size: 24px;">
-                                <i class="fa-solid fa-cart-plus"></i>
-                            </a>
+                            <form action="{{route('addToCart', $product->id)}}" method="post">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $product->id }}">
+                                <button type="submit" class="btn btn-sm btn-outline-primary" style="font-size: 24px;">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>

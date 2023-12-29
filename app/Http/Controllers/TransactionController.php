@@ -6,15 +6,18 @@ use App\Http\Requests\StoreTransactionRequest;
 use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
 class TransactionController extends Controller
 {
     public function index()
     {
+        $bestSell = Product::where('quantity_out','>=', 5)->get();
         $products = Product::paginate(15);
+        $countCarts = Cart::count();
         return view('customer.home', [
             'products'      => $products,
+            'countCarts' => $countCarts,
+            'bestSell' => $bestSell,
         ]);
     }
 

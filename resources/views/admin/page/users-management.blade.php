@@ -15,18 +15,25 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>No</th>
-                            <th>No</th>
-                            <th>No</th>
+                            <th>NIK</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Image</th>
+                            <th>Role</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                    @foreach($users as $user => $value)
                         <tr>
-                            <td>uhissdhu</td>
-                            <td>uhissdhu</td>
-                            <td>uhissdhu</td>
-                            <td>uhissdhu</td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $value->nik }}</td>
+                            <td>{{ $value->name }}</td>
+                            <td>{{ $value->email }}</td>
+                            <td>
+                                <img src="{{ asset('storage/user/' . $value->image) }}" width="50px" alt="" draggable="false">
+                            </td>
+                            <td>{{ $value->Role->name }}</td>
                             <td>
                                 <center>
                                     <a href="#" class="btn btn-primary"><i class="fas fa-edit"></i></a>
@@ -34,7 +41,9 @@
                                 </center>
                             </td>
                         </tr>
+                    @endforeach
                     </tbody>
+
                 </table>
             </div>
         </div>

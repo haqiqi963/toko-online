@@ -13,8 +13,10 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
-        return view('admin.page.users-management', compact('users'));
+        $users = User::where('role_id', '!=', 1)->with('Role')->get();
+        return view('admin.page.users-management', [
+            'users' => $users,
+        ]);
     }
 
     public function registerCustomer(Request $request)

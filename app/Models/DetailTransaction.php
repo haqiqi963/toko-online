@@ -13,6 +13,8 @@ class DetailTransaction extends Model
     protected $fillable = [
       'id_transaction',
       'id_items',
+        'quantity',
+        'price',
         'status'
     ];
 

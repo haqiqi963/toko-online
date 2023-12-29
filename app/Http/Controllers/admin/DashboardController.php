@@ -12,7 +12,8 @@ class DashboardController extends Controller
     {
         $productCount = Product::count();
         $userCount = User::count();
+        $adminCount = User::whereIsMember('!=', 1)->count();
 
-        return view('admin.page.dashboard', compact(['userCount', 'productCount']));
+        return view('admin.page.dashboard', compact(['userCount', 'productCount', 'adminCount']));
     }
 }

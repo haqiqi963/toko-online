@@ -28,6 +28,9 @@ use Illuminate\Support\Facades\Route;
     Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
     Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
+    Route::post('/checkout/process/{id}', [HomeController::class, 'checkoutProcess'])->name('checkout.product');
+    Route::post('/checkout/processPayment', [HomeController::class, 'processPayment'])->name('checkout.payment');
+
 
     Route::post('/registerCust', [UserController::class, 'registerCustomer'])->name('registerCust');
     Route::post('/loginCust', [UserController::class, 'authentication'])->name('loginCust');
